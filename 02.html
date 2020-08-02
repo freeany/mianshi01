@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let obj = {a: 1, fn: function() { return 123 }}  // 测试通过
+        let obj = { a: 1, b: { c: 1, d: { f: 1 }, arr: [1, 2, 3] }, g: null, m: function () { } }
+
+        function deepClone(obj) {
+            let result = {}
+            for (let key in obj) {
+                // 保证key 不是原型的属性
+                if (obj.hasOwnProperty(key)) {
+                    if (typeof obj[key] === 'object' && typeof obj[key] !== 'function' && obj[key] !== null) {
+                        result = Object.assign(result, { [key]: deepClone(obj[key]) })
+                    } else {
+                        result = Object.assign(result, { [key]: obj[key] })
+                    }
+                }
+            }
+            // let result = Object.assign({}, obj)
+
+            return result
+        }
+
+        let deepResult = deepClone(obj)
+        console.log('deepResult: ', deepResult)
+        obj.b.c = 2
+        obj.b.d.f = 2
+        obj.b.arr[0] = 30000
+        // deepResult.a = 13
+        console.log('obj: ', obj)
+        console.log('deepResult: ', deepResult)
+    </script>
+</body>
+
+</html>

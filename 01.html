@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. typeof 能判断哪些类型
+        // string number boolean undefined null object symbol array
+        // 2. 何时使用 ===  何时使用 == 
+        // 判断类型和值的时候使用全等，只判断值的时候使用两等
+        // 3. windo.onload 和 window.DOMContentLoaded 的区别
+        // window.onload 是等页面上的dom和资源加载完毕之后触发的回调，window.DOMContentLoaded 是等dom渲染之后触发的回调
+        // 4. js手写10个 a标签， 点击的时候弹出对应的序号
+        // for(let i = 1; i<=10; i++) {
+        //     const a = document.createElement('a')
+        //     a.innerHTML = i+ '哈哈哈'
+        //     a.onclick = function(e) {
+        //         e.preventDefault()
+        //         alert(i)
+        //         return false
+        //     }
+        //     document.body.appendChild(a)
+        // }
+
+        for (var i = 1; i <= 10; i++) {
+            (function (i) {
+                const a = document.createElement('a')
+                a.innerHTML = i + '哈哈哈'+'                '
+                a.onclick = function (e) {
+                    e.preventDefault()
+                    alert(i)
+                    return false
+                }
+                document.body.appendChild(a)
+            }
+            )(i)
+        }
+
+        // 5. 手写节流 throttle、防抖debounce
+
+        // 6. promise解决了什么问题
+        // promise解决了回调地狱的问题， 基于promise的async await 让程序更加优雅和简洁，promise相比较以前的回调函数来说是一种更好用的异步解决方案， 异步的三种状态promise暴露了三个接口，pendding reject resolve 
+    </script>
+</body>
+
+</html>
